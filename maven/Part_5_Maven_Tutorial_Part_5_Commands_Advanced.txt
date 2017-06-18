@@ -1,0 +1,82 @@
+Maven Super pom and effective pom:
+==================================
+
+Super pom:
+==========
+The super pom contains the configuration details like where the source code is kept for compiling and so on(like default source directory, default test directory, default target directory and so on).
+The super pom also contains plugins like 'compiler plugin', 'sure-fire plugin' which we get for free.
+The most important section is the repository section which defines the Central maven repo from where the dependencies are downloaded.
+It's just like the Object class in java which is the super class of all the classes.
+
+Effective pom:
+==============
+The effective pom is the combination of super pom and our pom.
+
+$ mvn help:effective-pom
+--> displays the effective pom
+
+$ mvn help:effective-pom -Doutput=effective-pom.xml
+--> stores the effective pom in the file
+
+Effective settings:
+===================
+$ mvn help:effective-settings
+--> display the effective settings on the console
+
+$ mvn help:effective-settings -Doutput=effective-settings.xml
+--> stores the effective settings in to a file
+
+The most important settings in this file is the <localRepository> which defines the path where dependencies are stored after download.
+
+Plugins:
+========
+Plugins helps you to customize your build. If you want to compile your code by using java 1.8 rather than the default 1.5 in eclipse
+you can override the 'maven-compiler-plugin' which comes in the effective pom and add that plugin in your project pom.
+ex:
+<build>
+	<plugins>
+		<plugin>
+			<artifactId>maven-compiler-plugin</artifactId>
+    		<version>3.2</version>
+    		<configuration>
+    			<source>1.8</source>
+    			<target>1.8</target>
+    		</configuration>
+		</plugin>
+	</plugins>
+</build>
+
+Another important tag in the plugin section is the <phase> tag which tells during which build phase the plugins are invoke.
+ex: <phase>compile</phase>, <phase>test</phase>
+
+Run Tomat configured in pom.xml:
+================================
+$ mvn tomcat7:run
+
+<contextReloadable>true</contextReloadable>
+--> Reloads the content instantly witout restarting the server.
+
+How to skip tests:
+==================
+$ mvn clean install -DskipTests=true
+
+How to run maven in debug mode:
+===============================
+$ mvn -X clean install
+
+To troubleshoot save the output of debug in a txt file incase you are not able to figure out the problem.
+$ mvn -X clean install > maven-debug.txt
+
+Dependency tree for a project:
+==============================
+$ mvn dependency:tree
+
+This shows the entire dependency tree for a project.
+
+Download the source code for the dependencies:
+==============================================
+$ mvn dependency:sources
+
+Help Command:
+=============
+$ mvn --help

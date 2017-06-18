@@ -1,0 +1,428 @@
+Maven pom.xml file:
+
+POM is an acronym for Project Object Model. 
+The pom.xml file contains information of project and configuration information for the maven to build the project such as dependencies, build directory, source directory, test source directory, plugin, goals etc.
+
+Maven reads the pom.xml file, then executes the goal.
+
+Before maven 2, it was named as project.xml file. But, since maven 2 (also in maven 3), it is renamed as pom.xml.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Element			|	Description
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+project			|	It is the root element of pom.xml file.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+modelVersion	|	It is the sub element of project. It specifies the modelVersion. It should be set to 4.0.0.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+groupId			|	It is the sub element of project. It specifies the id for the project group.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+artifactId		|	It is the sub element of project. It specifies the id for the artifact (project). An artifact is something that is either produced or used by  					   a project. Examples of artifacts produced by Maven for a project include: JARs, source and binary distributions, and WARs.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+version			|	It is the sub element of project. It specifies the version of the artifact under given group.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Eg: pom.xml
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"   
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
+http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+  
+  <modelVersion>4.0.0</modelVersion>  
+  <groupId>com.javatpoint.application1</groupId>  
+  <artifactId>my-app</artifactId>  
+  <version>1</version>  
+
+</project>
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Maven pom.xml file with additional elements.
+Here, we are going to add other elements in pom.xml file such as:  
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Element			|	Description
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+packaging		|	defines packaging type such as jar, war etc.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+name			|	defines name of the maven project.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+url				|	defines url of the project.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dependencies	|	defines dependencies for this project.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dependency		|	defines a dependency. It is used inside dependencies.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+scope			|	defines scope for this maven project. It can be compile, provided, runtime, test and system.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Eg: pom.xml
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"   
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
+http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+  
+  <modelVersion>4.0.0</modelVersion>  
+  
+  <groupId>com.javatpoint.application1</groupId>  
+  <artifactId>my-application1</artifactId>  
+  <version>1.0</version>  
+  <packaging>jar</packaging>  
+  
+  <name>Maven Quick Start Archetype</name>  
+  <url>http://maven.apache.org</url>  
+  
+  <dependencies>  
+    <dependency>  
+      <groupId>junit</groupId>  
+      <artifactId>junit</artifactId>  
+      <version>4.8.2</version>  
+      <scope>test</scope>  
+    </dependency>  
+  </dependencies>  
+  
+</project>
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Maven Example:
+
+We can create a simple maven example by executing the 'archetype:generate' command of mvn tool.
+To create a simple java project using maven, you need to open command prompt and run the archetype:generate command of mvn tool.
+
+Syntax:
+The syntax to generate the project architecture is given below:
+
+mvn archetype:generate -DgroupId=groupid -DartifactId=artifactid   
+-DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=booleanValue 
+
+Example:
+The example to generate the project architecture is given below:
+
+mvn archetype:generate -DgroupId=com.javatpoint -DartifactId=CubeGenerator   
+-DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false  
+
+(** Note **):
+-------------
+ Here, we are using 'maven-archetype-quickstart' to create simple maven core project. 
+ If you use 'maven-archetype-webapp', it will generate a simple maven web application.
+
+Now,
+Executing the following command given in example above in the directory: D:\ashu\maven
+This will first download the required maven jars in the local repository.
+C:\ashu\mavenlocalrepository: Got filled with jars after running the command.
+
+Generated Directory Structure:
+
+Now go to the current directory from where you have executed the mvn command. 
+For example: D:\ashu\maven. You will see that a simple java project is created that has the following directory:
+
+Command:
+mvn archetype:generate -DgroupId=com.javatpoint -DartifactId=CubeGenerator -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false  
+
+CubeGenerator  
+-src  
+--main  
+---java  
+----com  
+-----javatpoint  
+------App.java  
+--test  
+---java  
+----com  
+-----javatpoint  
+------AppTest.java  
+-pom.xml  
+
+As you can see, there are created 3 files pom.xml, App.java and AppTest.java. Let's have a quick look at these files:
+
+1) Automatically Generated pom.xml file:
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"   
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
+http://maven.apache.org/maven-v4_0_0.xsd">  
+  
+  <modelVersion>4.0.0</modelVersion>  
+  <groupId>com.javatpoint</groupId>  
+  <artifactId>CubeGenerator</artifactId>  
+  <packaging>jar</packaging>  
+  <version>1.0-SNAPSHOT</version>  
+  <name>CubeGenerator</name>  
+  <url>http://maven.apache.org</url>  
+  <dependencies>  
+    <dependency>  
+      <groupId>junit</groupId>  
+      <artifactId>junit</artifactId>  
+      <version>3.8.1</version>  
+      <scope>test</scope>  
+    </dependency>  
+  </dependencies>  
+</project>
+
+2) Automatically Generated App.java file
+
+package com.javatpoint;  
+/** 
+ * Hello world! 
+ * 
+ */  
+public class App   
+{  
+    public static void main( String[] args )  
+    {  
+        System.out.println( "Hello World!" );  
+    }  
+}  
+
+3) Automatically Generated AppTest.java file
+
+package com.javatpoint;  
+  
+import junit.framework.Test;  
+import junit.framework.TestCase;  
+import junit.framework.TestSuite;  
+/** 
+ * Unit test for simple App. 
+ */  
+public class AppTest   
+    extends TestCase  
+{  
+    /** 
+     * Create the test case 
+     * 
+     * @param testName name of the test case 
+     */  
+    public AppTest( String testName )  
+    {  
+        super( testName );  
+    }  
+    /** 
+     * @return the suite of tests being tested 
+     */  
+    public static Test suite()  
+    {  
+        return new TestSuite( AppTest.class );  
+    }  
+    /** 
+     * Rigourous Test :-) 
+     */  
+    public void testApp()  
+    {  
+        assertTrue( true );  
+    }  
+}  
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Compile the Maven Java Project:
+
+To compile the project, go to the project directory,
+for example: D:\ashu\maven and write the following command on the command prompt:
+$ mvn clean compile 
+
+Now, you will see a lot of execution on the command prompt. 
+If you check your project directory, target directory is created that contains the class files. 
+
+Run the Maven Java Project:
+
+To run the project, go to the project directory\target\classes,
+for example: D:\ashu\maven\target\classes and write the following command on the command prompt:
+
+$ java com.javatpoint.App  
+
+Now, you will see the output on the command prompt:
+Output of the maven example:
+
+Hello World!  
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+How to build the maven project or how to package maven project?
+
+The mvn package command completes the build life cycle of the maven project such as:
+
+validate
+compile
+test
+package
+integration-test
+verify
+install
+deploy
+
+Visit this link to know more about build life cycle http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+You need to execute the following command on the command prompt to package the maven project:
+
+$ mvn package  
+
+Now you will see that a jar file is created inside the project/target directory.
+
+You can also run the maven project by the jar file. To do so, go to the maven project directory, for example: D:\ashu\maven\CubeGenerator and execute the following command on the cmd:
+
+$ java -classpath target\CubeGenerator-1.0-SNAPSHOT.jar;.; com.javatpoint.App  
+
+Now you will see the following output:
+
+Hello World! 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Maven Web Application:
+
+We can create a simple maven web application example by executing the archetype:generate command of mvn tool.
+Example:
+
+The example to generate the project architecture is given below:
+
+mvn archetype:generate -DgroupId=com.javatpoint -DartifactId=CubeGeneratorWeb -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+(**Note**):
+Here, we are using 'maven-archetype-webapp' to create simple maven web application. 
+If you use 'maven-archetype-quickstart', it will generate a simple maven core project.
+
+Generated Directory Structure
+
+Now go to the current directory from where you have executed the mvn command. For example: d:\CubeGeneratorWeb. You will see that a simple java project is created that has the following directory:
+
+CubeGenerator  
+-src  
+--main  
+---resources  
+---webapp  
+----WEB-INF  
+-----web.xml  
+----index.jsp  
+-pom.xml
+
+There are created 3 files pom.xml, index.jsp and web.xml .
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Maven Plugins:
+
+The maven plugins are central part of maven framework, it is used to perform specific goal.
+
+According to Apache Maven, there are 2 types of maven plugins.
+
+1. Build Plugins
+2. Reporting Plugins
+
+Build Plugins:
+--------------
+These plugins are executed at the time of build. These plugins should be declared inside the <build> element.
+
+Reporting Plugins:
+------------------
+These plugins are executed at the time of site generation. These plugins should be declared inside the <reporting> element.
+
+Maven Core Plugins:
+
+A list of maven core plugins are given below:
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Plugin			|		Description
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+clean			|		clean up after build.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+compiler		|		compiles java source code.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+deploy			|		deploys the artifact to the remote repository.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+failsafe		|		runs the JUnit integration tests in an isolated classloader.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+install			|		installs the built artifact into the local repository.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+resources		|		copies the resources to the output directory for including in the JAR.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+site			|		generates a site for the current project.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+surefire		|		runs the JUnit unit tests in an isolated classloader.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+verifier		|		verifies the existence of certain conditions. It is useful for integration tests.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+List of Maven Plugins:
+
+To see the list of maven plugins, you may visit apache maven official website http://repo.maven.apache.org/maven2/org/apache/maven/plugins/. 
+Maven plugins are also available outside the maven at codehaus.org and code.google.com.
+
+
+Scope:
+------
+
+This tag comes under dependency and it tells when the specified artifact will be used.
+
+For eg: <scope>test</scope>
+
+<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+</dependency>
+
+It tells this jar will be used during the test phase of default life cycle.
+
+Note:
+-----
+Default scope is compile. So all the jars specified in the pom.xml will be available during the compilation phase.
+In case of web app there is one more scope called 'provided'.
+
+Scope discussed so far : compile, test, provided.
+
+
+Applications Archetype::
+-----------------------
+
+1018 : Web Application j2ee14
+
+Plugin:
+-------
+
+The maven compiler is nothing but a plugin inside the maven architecture.
+It helps to compile the files.
+
+Maven 2 : default compiler version is 1.4
+Maven 3 : default compiler version is 1.5
+
+So if your code is having generics make sure you use compiler version 1.5 if you are using maven 2. 
+For Maven 3 it will work since it's default compiler version is 1.5 and generics are part of java 1.5.
+
+Jetty plugin:
+-------------
+
+Like a container to run the application. Include in pom.xml file.
+
+<plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.10</version>
+</plugin> 
+
+Run:
+----
+$ mvn jetty:run
+
+Access the applicaton at : http://localhost:8080/XXXXX(AppContext)
+
+Conclusion: 
+-----------
+
+It will build, compile and deploy the application all in one go.
+If you make any changes to jsp files it will be automatically reflected on refresh.
+
+What about java files. We still need to compile to see the changes in java files.
+We can overcome this by setting 'ScanIntervalSeconds' in configuration tag of jetty plugin so that it will listen to java changes as well.
+
+<plugin>
+  <groupId>org.mortbay.jetty</groupId>
+  <artifactId>maven-jetty-plugin</artifactId>
+  <version>6.1.10</version>
+  <configuration>
+    <scanIntervalSeconds>5</scanIntervalSeconds>
+  </configuration>
+</plugin>
+
+This will check changes for java files every 5 seconds and will implicitly build, compile and deploy. Jetty saves your life !!!
