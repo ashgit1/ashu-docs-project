@@ -1,0 +1,16 @@
+
+url: http://www.wikihow.com/Install-Oracle-Java-on-Ubuntu-Linux
+
+/usr/local/java/jdk1.8.0_131/
+
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_131/jre/bin/java" 1
+
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_131/bin/java" 1
+
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.8.0_131/bin/javaws" 1
+
+sudo update-alternatives --set java /usr/local/java/jdk1.8.0_131/jre/bin/java
+
+sudo update-alternatives --set java /usr/local/java/jdk1.8.0_131/bin/java
+
+sudo update-alternatives --set javaws /usr/local/java/jdk1.8.0_131/bin/javaws
