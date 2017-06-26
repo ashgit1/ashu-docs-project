@@ -1,0 +1,248 @@
+================
+Jekyll Commands:
+================
+
+To create a new project:
+$ Jekyll new proj-name
+
+=================
+Start the server:
+=================
+$ jekyll serve
+	OR
+$ bundle exec jekyll serve
+
+==========================================
+To show the default location of the theme:
+==========================================
+$ bundle show minima
+
+=======
+Points:
+=======
+1. The files inside the "_site" folder are the ones which are uploaded to web server.
+2. The folders starting with an '_' are the ones used by jekyll.
+3. All the files and folders which don't start with an '_' are simply copied to the "_site" folder.
+4. Whatever files and folders you delete from the project folder those will be automatically deleted by jekyll from "_site" folder.
+
+===================
+Yaml Front Matter:
+==================
+It's a form of yaml jekyll uses to maintain data about a page and its content.
+A file that contains yaml front matter will be treated as a special file by jekyll.
+Front matter must be at the beginning of the file so that jekyll knows to process the file!
+
+Syntax:
+---
+layout: default (which you create in the _layout folder)
+title: Some Title
+---
+
+=======================================
+How to give custom title to web pages:
+=======================================
+We should add this in the <title> section of the default layout page.
+
+{% if page.title %}
+	{{page.title}}
+	{% else %}
+Some Common Title
+	{% endif %}
+
+
+================
+includes folder:
+================
+If we want to take out the common section in all the pages, place it in a html file in the "_includes" folder and then add it in other pages by using the 
+--> {% include page.html %}
+
+=====
+site:
+=====
+All the varibales in the '_config.yml' are accessible by using the site varibale.
+ex: site.title sets the title defined in the _config.yml file to the pages where you wish to use.
+
+============
+_config.yml:
+============
+This is the most important file as we define properties here w.r.t how our site will function, available and so on.
+(*) Whenever we make changes in this file we need to restart the server.
+-> site.description = give the description of your site which will be available in SEO.
+
+
+=================================
+Predefined and custom variables:
+=================================
+site, content and page
+
+1. site: Its a global variable and contains data about the page.
+ex: site.pages, site.posts, site.data
+
+2. page: Its also a global varibale and contains data about a single page.
+ex: page.title
+
+3. content: We use content to dispaly the contents of the page in the default.html page.
+
+
+============================
+Liquid Templating Language:
+============================
+Jekyll uses liquid templating language to process templates and output contents.
+
+
+=================
+Markup in Liquid:
+=================
+We have 2 markup in Liquid:
+1. Output markup
+2. Tag Markup
+
+
+Output markup: 
+used to output content and is uses 2 curly braces.
+ex: {{ site.title }}
+
+Tag markup:
+used to perform logic.
+ex: {% if page.title %}
+	{% endif %}	
+
+Also used when we use include: <% include page.html %>
+
+=======================================
+What does  Jekyll does in a nutshell ?
+=======================================
+
+1. reads the configuration file (_config.yml)
+2. reads all the other files and then it checks for YAML Front Matter
+3. uses the Liquid Templating Language to process the contents and templates
+4. reads the assets
+5. generates the final output to '_site' folder
+
+==================
+Build Application:
+==================
+$ jekyll build --trace
+
+Use this command to build the application in verbose mode.
+This will highlight build errrs if found.
+
+=========
+Blogging:
+=========
+Blogging is integrated into Jekyll's functionality.
+
+We can publish articles simply by managing a folder of text files on our computer
+These files are generally 'markdown' or 'html'
+
+All the posts must have YAML Front Matter and they will be converted from their source format into an HTML page that is part of our static site. 
+The files should reside in "_posts" folder
+Due to above there is no need to store data in databases. Cool.
+
+Jekyll requires blog post files to be named according to the following format:
+YEAR-MONTH-DAY-title.MARKUP
+(Both .md and .markdown are extensions of MARKUP)
+
+========
+Filters:
+========
+
+They are used to format the data. 
+Commonly used filters are:
+- date
+- capitalize, upcase, downcase
+- first, last
+- join 
+- escape
+
+=====
+Note:
+=====
+You can add as many Custom variables to Front Matter as you want.
+example: author: Ashishkumar Gupta
+
+
+=============================
+Default Path of post article:
+=============================
+category-name/year/month/day/title.html
+ex: jekyll/2017/06/19/benefits-of-static-website-generator.html
+
+--> http://127.0.0.1:4000/jekyll/2017/06/19/benefits-of-static-website-generator.html
+
+Specify the below in _config.yml to get rid of date in the above url:
+--> permalink: none
+
+Now the url looks more clean.
+http://127.0.0.1:4000/jekyll/benefits-of-static-website-generator.html
+
+
+
+
+=====================
+Liquid code for post:
+=====================
+The Post Loop
+{% for post in site.posts %}
+{% endfor %}
+
+Basically it is used in blog pages where we need to display our posts.
+
+If you don't want to display the whole content and just want to display the first blog then use
+--> {{ post.excerpt }}
+
+
+===============
+DRY Principles:
+===============
+Don't Repeat yourself.
+
+
+==================
+Some useful links:
+==================
+
+https://formspree.io/
+http://fontawesome.io/
+https://disqus.com/
+
+
+======================
+How to read services ?
+======================
+Read data from the "_data" folder which can be in the form of yml, json, csv etc
+--> site.data.services
+ex:
+{% for service in site.data.services %}
+{% endfor %}
+
+
+======================================================================
+Read data from a json file in the '_data' folder and store in filters:
+======================================================================
+
+{% assign filters = site.data.projects | group_by: 'category' %}
+	{% for filter in filters %}
+		<li class="filter" data-filter=".{{ filter.name }}">{{ filter.name }}</li>
+	{% endfor %}
+
+Above, we are storing all the category from a json file and storing in filters array. 
+
+
+===================================
+Hosted my demosite in GitHub Pages:
+===================================
+
+We can published our site to GitHub Pages.
+The github pages refer to a special branch called "gh-pages".
+Create this branch and publish to GitHub.
+We can access our site below url.
+UrL: http://ashgit1.github.io/jekyll-demosite
+https://ashgit1.github.io/jekyll-demosite/index.html
+
+GitHub IP: 192.30.252.153
+
+
+
+
+
