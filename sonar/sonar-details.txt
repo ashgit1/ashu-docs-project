@@ -1,0 +1,75 @@
+
+1. Install the sonar server
+2. Install Sonar Scanner [Sonar Runner]
+3. Set the path of Sonar Scanner (/bin) to Path environment variable
+4. Run the sonar scanner from any project's desired directory by giving the command "sonar-runner.bat"
+
+Sonar Url: 
+==========
+http://localhost:9000
+
+Admin credentials:
+===================
+username: admin
+password: admin
+
+Configuring sonar for maven projects:
+=====================================
+1. Inorder to configure sonar for maven, make an entry in settings.xml file (F:\ProgramsInstalled\apache-maven-3.3.3-bin\conf)
+in the <pluginGroups> tag.
+
+<pluginGroups>
+	<pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
+</pluginGroups>
+
+2. Create a new profile called sonar in the <profiles> section in the above settins.xml file.
+<!-- Sonar Profile -->  
+    <profile>
+        <id>sonar</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+          <!-- Optional Url to serve. Default is http://localhost:9000 -->
+          <sonar.host.url>
+              http://localhost:9000
+          </sonar.host.url>
+        </properties>
+    </profile>
+
+3. Once the above steps are done, go to your maven projects home directory and run the below command
+$ mvn clean install (Good practise. Optional)
+$ mvn sonar:sonar
+
+That's it !!!
+
+Quality Profiles:
+=================
+Quality Profiles are collections of rules to apply during an analysis.
+For each language there is a default profile. 
+All projects not explicitly assigned to some other profile will be analyzed with the default.
+
+Using "BackUp" Option we can save any Quality Profile. It will be in xml format.
+We can later use this quality profile in some other sonar instance and create a new quality profile by uploading the above xml file.
+This way we can get the same quality profile in multiple sonar instances.
+
+We can use the "Copy" option to copy existing quality profile to a new one by copying all the rules and then adding our own custom rules.
+This way we can use inheritance.
+
+
+Quality Gate: 
+=============
+Quality Gate is the set of conditions the project must meet before it can be released into production.
+It is possible to set a default Quality Gate, which will be applied to all projects not explicitly assigned to some other gate.
+Like Quality Profiles we can copy existing Quality gate to create our own Quality Gate. [Copy Option]
+We can create new Quality Gates [Create Option] and add the thresholds.
+
+
+Conditions:
+-----------
+Only project measures are checked against thresholds. Sub-projects, directories and files are ignored.
+
+Note:
+=====
+Admin users can add/modify/delete Quality Profiles and Quality Gates.
+Normal users will be able to only 'view' the above.
