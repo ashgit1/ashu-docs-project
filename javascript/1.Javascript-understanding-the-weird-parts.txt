@@ -64,3 +64,43 @@ uncaught reference:
 Without declare a variable if we do console.log(var) it will throw the below exception:
 Uncaught Reference: var is not defined.
 Reason being that variable is not set in the memory space by JS engine.
+
+
+***************************************************
+Chapter 12: The Execution Context - Code Execution 
+***************************************************
+Nice example to understand 'hoisting' and code execution all at once.
+
+function b(){
+    console.log('Called b!');
+}
+b();
+
+console.log(a);
+
+var a = 'Ashish';
+console.log(a);
+
+Output:
+-------
+Called b!
+undefined
+Ashish
+
+**************************************************************
+Chapter 13: Conceptual Aside: Single Threaded, Syncronization
+**************************************************************
+
+Javascript is single threaded, synchronous execution in its behaviour!
+Sounds Strange!!!
+
+Single Threaded:
+================
+One command at a time. 
+May be not under the hood of browser because apart from JS there are many things which executes.
+
+Syncronization: 
+===============
+One at a time and in order.
+In JS only one thing happens at a time.
+We will later learn how this is Asynchronous in Ajax.
