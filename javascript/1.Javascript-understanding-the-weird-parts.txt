@@ -1,0 +1,66 @@
+****************************************************************************************
+Chapter6: Conceptual aside: Syntax parsers, Execution contexts and Lexical Environments
+****************************************************************************************
+
+Syntax parser:
+--------------
+A program that reads your code and determines what it does and if its grammar is valid.
+Your code isn't magic.
+Someone else wrote a program(compiler) to translate your code to the computer.
+
+Lexical Environment:
+--------------------
+Where something sits physically in the code you write.
+Lexical means 'having to do with word or grammar'.
+A Lexical environment exist in programming languages in which where you write something is important.
+ex:
+function hello(){
+  var a = "ashish";
+}
+Here the variable 'a' sits lexically inside the function hello() which will sit lexically inside a javascript file.
+
+Execution Context:
+------------------
+A wrapper to help manage the code that is running.
+There are lots of Lexical environments. Which one is currently running is managed by Execution Context.
+It can contains things beyond what you have written in your code.
+
+****************************************
+Chapter7: Name/Value Pairs and Objects
+****************************************
+
+Name/Value Pairs:
+-----------------
+Same as like key/value where the value itself might be another Object.
+
+Objects:
+--------
+A collection of name/value pairs.
+This is the simplest definition in javascript.
+
+**********************************************************
+Chapter 10: The Execution Context - Creation and Hoisting
+**********************************************************
+
+Hoisting:
+=========
+Setting up memory space for variables and functions is called 'Hoisting'.
+So that the variables and functions are available anywhere in the code.
+ex: even if you call function and declare it later in the code it will execute but for variables it will throw undefined exception.
+The JS engine does this creation of memory space upon reading your code.
+For functions it will call the block but for variable it will return into 'undefined' if the variables are used first and declare later since it will not be able know what value it will hold. That's why it will return 'undefined'.
+
+*********************************************************
+Chapter 11: Conceptual Aside: Javascript and 'undefined'
+*********************************************************
+
+undefined variables:
+====================
+Whenever a variable is declared it is assigned a special value called 'unassigned'.
+That's why if we declare a variable and try to do console.log(var) it shows 'unassigned'.
+
+uncaught reference:
+===================
+Without declare a variable if we do console.log(var) it will throw the below exception:
+Uncaught Reference: var is not defined.
+Reason being that variable is not set in the memory space by JS engine.
