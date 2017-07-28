@@ -64,6 +64,9 @@ For more examples and ideas, visit:
  $ docker images
  $ docker login
  $ docker push ashudoc/docker-whale
+            OR
+ $ docker push myRegistry.com/myImage
+ 
 
  Commands:
  =========
