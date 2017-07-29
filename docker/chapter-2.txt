@@ -47,6 +47,7 @@ $ docker rm $(docker ps -a -q)   : Removes all the containers
 $ docker rm -f container 		 : remove the container forcefully
 $ docker pull ubuntu			 : docker pull ubuntu:latest
 $ docker search ubuntu			 : search image from the command line
+$ docker build -t tag-name .     : building the image
 
 
 3 step process to remove image from docker:

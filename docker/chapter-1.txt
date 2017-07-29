@@ -8,6 +8,22 @@ On Windows Machine.
 2. Docker ToolBox (Since my system is Home-Office.)
 3. Oracle VM virtual Box. (This comes as a part of toolbox)
 
+What is Docker:
+===============
+Docker is a software which provides centralized platform to execute your application. 
+It wraps software components into a complete standardized unit which contains everything require to run. 
+Whether it is code, runtime environment, tools or libraries. It guarantees that the software will always run as expected.
+
+Docker provides the facility to run an application in a isolated environment which is called container. 
+You can run many containers simultaneously on a given host. 
+It is lightweight, so starts instantly and uses less RAM. It is secure by default because each container is isolated from one another.
+
+Docker Engine:
+==============
+It is a client server application that contains the following 3 major components:
+1. A server which is a type of long-running program called a daemon process.
+2. The REST API is used to specify interfaces that programs can use to talk to the daemon and instruct it what to do.
+3. A command line interface client.
 
 Terminologies:
 ==============
