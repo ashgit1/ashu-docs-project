@@ -1,0 +1,45 @@
+
+
+$ docker container run --publish  8080:80 --name webhost -d nginx:1.11 nginx -T :
+								 (A)						  (B) 	   (C)
+A -> change host listening port
+B -> change version of image
+C -> change CMD run on start
+
+$ docker top mongo:
+List processes running inside a container. 
+It will show processes running inside the mongo container.
+
+This will list the pid of the process running inside that container. 
+	In this case its " mongod "
+
+Now we can also check this process running on the host operating system.
+$ ps aux :
+This will list all the processes on that host including the ones running inside the container.
+
+Running 3 containers:
+mysql, httpd and nginx 
+
+mysql:
+	"$ docker container run -d -p 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql"
+	"$ docker container logs db" -> to search for the password
+	--> "GENERATED ROOT PASSWORD: HeWoo5mohk8UngaeDur8rueT0eefuahe"
+
+webserver:
+	"$ docker container run -d --name webserver -p 8080:80 httpd"
+
+nginx:
+	"$ docker container run -d --name proxy -p 80:80 nginx"
+
+Testing:
+	"nginx   : curl localhost:80"
+	"apachec : curl localhost:8080"
+
+==================================
+What's going on Inside Containers:
+==================================
+$ docker container top 		: process list in one container
+$ docker container inspect  : details of one container config
+$ docker container stats    : performance stats of all Containers (displays a live streaming of containers)
+
+
