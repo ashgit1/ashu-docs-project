@@ -14,16 +14,57 @@ hosting service for Git repositories. So they are not the same thing.
 Git the tool, GitHub the service for projects that use Git.
 
 # Basic Commands:
-Initialize repository				 : 	`git init`
-Adding files to stage 				 : 	`git add filename, git add *`
-Committing to Repository 			 : 	`git commit -m "commit message"`
-Add Remote Repository 				 : 	`git remote add origin URL`
-Pushing changes to remote repository : 	`git push origin master/branchname`
-Showing the commit history			 :  `git log`
+Initialize repository				 : 	`git init`  
+Adding files to stage 				 : 	`git add filename, git add *`  
+Committing to Repository 			 : 	`git commit -m "commit message"`  
+Add Remote Repository 				 : 	`git remote add origin URL`  
+Pushing changes to remote repository : 	`git push origin master/branchname`  
+Showing the commit history			 :  `git log`  
 
+# Advances Commands:
+1. Difference between Working copy and repository:  
+Command `git diff` shows the differences between the working copy(green) and the repository(red).  
 
-## Difference between git pull and git merge:
-`git pull does a git fetch followed by a git merge`
+2. Difference between Staging and repository:  
+Command `git diff --staged` shows the differences between the staging(green) area and the repository(red).  
 
-## If you do not wish to merge the remote branch into your local branch and want to do a force push, use the push command with -f 
+3. Remove file from repository as well as working area:  
+Command `git rm third.txt` removes the file from the working area as well as from
+the repository. After deleting `git status` shows that the changes are not committed.  
+Do a `git commit -m "This is the point in time where we deleted file.txt"`.
+It helps later if we want to bring this file back from repository.  
+
+4. How to Move and Rename Files:  
+Command `git mv second.txt pudding.txt` to move or rename a file. `git status` shows the status and then use commit.  
+Else we need to do rename manually and then do the following:  
+`git add pudding.txt`, `git rm second.txt`, `git status` and then `git commit`.  
+
+5. How to Commit Directly to the Repository:  
+Command `git commit -am "message"` directly moves the changes to the repository from working area. Use this only for editing, comments or similar minor changes.
+Don't use this command if you are performing any delete or insertion operations on file.  
+`a: to add to staging area.`  
+`m: normal commit.`  
+
+6. How to checkout directly from repository:  
+Command `git checkout -- filename` replaces the working copy of the file from the repository. This is normally done if you did something wrong with the file and want to take the last committed file from the repository in the working area.  
+
+7. UnStage Files:  
+Command `git reset HEAD index.html` takes the file from the staging area to the working area. After making any changes you push the file to the staging area but then later realize that it shouldn't be committed. Use the command to bring it back to the working area.  
+
+8. Getting old version from the repository:  
+Command `git checkout commit_id -- index.html` gets that particular file from the repository history of the file and places in the working area.  Use `git log` to see the commits history(commit id) from where you need to take the file.  We don't need to give the entire commit id, upto 6-8 digits of the commit id is also fine.  
+
+9. Pushing to GitHub Repository:  
+`git remote add ashGitRepo GitHubRepoUrl`  
+`git remote`  
+`git remote rm ashGitRepo`  
+
+10. gitignore and GitHub Desktop:  
+If you don't like the command prompt use the desktop version of GitHub.  
+If you don't want to include set of files which are part of your IDE but not related to project, create a `.gitignore` file and give the file names in it.  
+ex: To ignore all the files of an IDE starting with `.idea` , create an entry `.idea` in `.gitignore` file.  
+
+11. Difference between git pull and git merge:  
+`git pull` does a `git fetch` followed by a `git merge`  
+If you do not wish to merge the remote branch into your local branch and want to do a force push, use the push command with -f  
 `git push -f origin <branch>`
