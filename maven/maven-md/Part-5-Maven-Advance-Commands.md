@@ -9,6 +9,9 @@
 >The most important section is the repository section which defines the Central maven repo from where the dependencies are downloaded.
 `It's just like the Object class in java which is the super class of all the classes.`
 
+> Default location of super pom in version 3.3.9: 
+`lib/maven-model-builder-3.3.9.jar:org/apache/maven/model/pom-4.0.0.xml`
+
 ##### Effective pom:
 >The effective pom is the combination of `super pom and our pom`.
 `mvn help:effective-pom`
