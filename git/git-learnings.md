@@ -1,17 +1,16 @@
-
 # Git Learnings:
 
-`Git is a software which allows you to keep track of your changes in project.`
-
-`GitHub is website for publishing your project managed by git so that many developers
-can work simultaneously on different modules.`
+>Git is a version control system, a tool to manage your source code history. 
+>GitHub is a hosting service for Git repositories. 
+>So they are not the same thing.
+>Git the tool, GitHub the service for projects that use Git.
 
 Also you can make your project public so that other people can view and make
 contributions to your projects.
 
-Git is a version control system, a tool to manage your source code history. GitHub is a
-hosting service for Git repositories. So they are not the same thing.
-Git the tool, GitHub the service for projects that use Git.
+# What is HEAD?:
+>HEAD is a pointer which points to the last commit.
+>It can be used to modify the last commits.
 
 # Basic Commands:
 Initialize repository				 : 	`git init`  
@@ -68,3 +67,45 @@ ex: To ignore all the files of an IDE starting with `.idea` , create an entry `.
 `git pull` does a `git fetch` followed by a `git merge`  
 If you do not wish to merge the remote branch into your local branch and want to do a force push, use the push command with -f  
 `git push -f origin <branch>`
+
+# Git Config Commands:
+- git config --global user.name "John Doe"
+- git config --global user.email johndoe@example.com
+- git config user.name
+- git config user.email
+
+A List of other git commands can be checked here [git-commands-url]
+
+# Modifying Commits:
+>We can only modify the last commit.
+We can't modify the commits in between because it violates the security and data integrity.
+
+` git commit --amend -m "Message"`
+
+This will commit the changes to the last commit. Though it updates the last commit,
+however the commit id changes(SHA)[Secure Hash] and also the timestamp(obviously).
+
+# What does the 'revert' command does?:
+>It takes commit id as parameter and flips the action of the commit.
+i.e anything that was added will be deleted and vice-versa.
+
+` git revert 12454asasas`
+
+It will ask for updating the commit message in a default editor. If we are happy
+with the message simply close the editor and it will be commited.
+
+# Git stashing:
+> When you want to switch branches, but you don’t want to commit what you’ve been working on yet so you’ll stash the changes.
+
+- To push a new stash onto your stack: `git stash`
+- To see which stashes you’ve stored: `git stash list`
+- You can reapply the one you just stashed by using the command: `git stash apply`
+- If you want to apply one of the older stashes: `git stash apply stash@{2}`. If you don’t specify a stash, Git assumes the most recent stash and tries to apply it.
+- To remove stash: `git stash drop XYZ`(with the name of the stash to remove)
+- To apply the stash and then immediately drop it from your stack: `git stash pop`
+- To create a branch from stash: `git stash branch`. This creates a new branch for you, checks out the commit you were on when you stashed your work, reapplies your work there, and then drops the stash if it applies successfully
+
+
+
+[//]: # (These are reference links used in the body)
+[git-commands-url]: <https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html>
